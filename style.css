@@ -1,0 +1,569 @@
+/* Medical Blue Theme for Drug Side Effect Prediction */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Medical Blue Theme Colors with Medium Background */
+    --primary-blue: #0D47A1;
+    --light-blue-bg: #E8F0FE;
+    --white: #FFFFFF;
+    --medium-blue: #1976D2;
+    --light-blue: #42A5F5;
+    --success: #4CAF50;
+    --warning: #FF9800;
+    --danger: #F44336;
+    --bg-medium: #B3C5D7;
+    --bg-light: #D4E3F0;
+    --text-dark: #1a1a1a;
+    --text-gray: #666666;
+    --text-light: #999999;
+    --border-light: #E0E0E0;
+    --shadow: rgba(13, 71, 161, 0.15);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-medium);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #B3C5D7 0%, #8FA8C4 100%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    stroke-width: 2;
+    color: var(--light-blue);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.subtitle {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Main Card */
+.main-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    border: 1px solid var(--border-light);
+    animation: fadeInUp 0.8s ease;
+}
+
+.card-header {
+    margin-bottom: 2rem;
+}
+
+.card-header h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+.card-header p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--text-gray);
+    stroke-width: 2;
+}
+
+#drug-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+#drug-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
+}
+
+#drug-input::placeholder {
+    color: var(--text-light);
+}
+
+/* Autocomplete */
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border: 2px solid var(--border-light);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.autocomplete-list.active {
+    display: block;
+}
+
+.autocomplete-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:hover {
+    background: var(--light-blue-bg);
+}
+
+.autocomplete-item strong {
+    color: var(--primary-blue);
+}
+
+/* Button */
+.btn-primary {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--primary-blue);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--medium-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 71, 161, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--border-light);
+    border-top-color: var(--primary-blue);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Error Message */
+.error-message {
+    background: #FFEBEE;
+    border: 2px solid var(--danger);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    color: #C62828;
+    animation: shake 0.5s ease;
+}
+
+/* Results */
+.results {
+    margin-top: 2rem;
+    animation: fadeInUp 0.5s ease;
+}
+
+.results-header {
+    margin-bottom: 2rem;
+}
+
+.results-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+}
+
+.drug-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.drug-name {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Side Effects Section */
+.side-effects-section,
+.precautions-section {
+    margin-bottom: 2rem;
+}
+
+.side-effects-section h4,
+.precautions-section h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    color: var(--warning);
+}
+
+.section-description {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.side-effects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.side-effect-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem;
+    border-left: 4px solid var(--primary-blue);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary-blue);
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.5s ease;
+}
+
+.side-effect-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.side-effect-item.severity-high {
+    border-left-color: var(--danger);
+    background: #FFEBEE;
+}
+
+.side-effect-item.severity-medium {
+    border-left-color: var(--warning);
+    background: #FFF3E0;
+}
+
+.side-effect-item.severity-low {
+    border-left-color: var(--success);
+    background: #E8F5E9;
+}
+
+.side-effect-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.side-effect-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.side-effect-probability {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.severity-high .side-effect-probability {
+    color: var(--danger);
+}
+
+.severity-medium .side-effect-probability {
+    color: var(--warning);
+}
+
+.severity-low .side-effect-probability {
+    color: var(--success);
+}
+
+.probability-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--light-blue-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.probability-fill {
+    height: 100%;
+    background: var(--primary-blue);
+    border-radius: 4px;
+    transition: width 0.8s ease;
+}
+
+.severity-high .probability-fill {
+    background: var(--danger);
+}
+
+.severity-medium .probability-fill {
+    background: var(--warning);
+}
+
+.severity-low .probability-fill {
+    background: var(--success);
+}
+
+/* Precautions */
+.precautions-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.precautions-list li {
+    padding: 0.75rem 1rem;
+    background: #FFF3E0;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    animation: fadeIn 0.5s ease;
+    border-left: 3px solid var(--warning);
+    color: var(--text-dark);
+}
+
+.precautions-list li::before {
+    content: "⚠️";
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.disclaimer {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--warning);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .main-card {
+        padding: 1.5rem;
+    }
+
+    .side-effect-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
