@@ -1,0 +1,10 @@
+{
+    "micro_auc": 0.8856027033108397,
+    "macro_auc": NaN,
+    "map_micro": 0.40457762964606614,
+    "map_macro": 0.05572613783496036,
+    "hamming_loss": 0.03203905759667842,
+    "accuracy": 0.9679609424033215,
+    "avg_predictions": 36.0,
+    "avg_true_labels": 151.01298701298703
+}
