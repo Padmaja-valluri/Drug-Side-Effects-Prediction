@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Side Effect Prediction | DeepSide AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+                <h1>DeepSide AI</h1>
+            </div>
+            <p class="subtitle">Advanced Drug Side Effect Prediction using Deep Learning</p>
+        </header>
+
+        <!-- Main Card -->
+        <div class="main-card">
+            <div class="card-header">
+                <h2>Predict Side Effects</h2>
+                <p>Enter a drug name to predict potential adverse reactions</p>
+            </div>
+
+            <!-- Input Form -->
+            <form id="prediction-form">
+                <div class="input-group">
+                    <label for="drug-input">Drug Name</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="M21 21l-4.35-4.35" />
+                        </svg>
+                        <input type="text" id="drug-input" placeholder="e.g., Aspirin, Ibuprofen..." autocomplete="off"
+                            required>
+                        <div id="autocomplete-list" class="autocomplete-list"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="predict-btn">
+                    <span class="btn-text">Predict Side Effects</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+            </form>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing molecular structure...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message hidden"></div>
+
+            <!-- Results Section -->
+            <div id="results" class="results hidden">
+                <div class="results-header">
+                    <h3>Prediction Results</h3>
+                    <div class="drug-info">
+                        <span class="drug-name" id="result-drug-name"></span>
+                    </div>
+                </div>
+
+                <!-- Side Effects List -->
+                <div class="side-effects-section">
+                    <h4>Predicted Side Effects</h4>
+                    <p class="section-description">Top 5 most likely adverse reactions</p>
+                    <div id="side-effects-list" class="side-effects-list"></div>
+                </div>
+
+                <!-- Precautions Section -->
+                <div class="precautions-section">
+                    <h4>
+                        <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        Precautions & Recommendations
+                    </h4>
+                    <ul id="precautions-list" class="precautions-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by DeepSide Framework | CNN-based Molecular Analysis</p>
+            <p class="disclaimer">⚠️ This is a prediction tool. Always consult healthcare professionals before taking
+                any medication.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
